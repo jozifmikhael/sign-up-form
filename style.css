@@ -3,33 +3,6 @@
     src: url(./font/Roboto/Roboto-Light.ttf);
 }
 
-.banner{
-    font-size: 54px;
-    position: absolute;
-    top: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    height: 100px;
-    background-color: rgba(0,0,0,0.3);
-}
-
-/* Start Now */
-.banner-text{
-    letter-spacing: 0.05em;
-    font-size: 32px;
-    font-weight: bold;
-    color: white;
-}
-
-/* logo */
-.banner img{
-    width: 50px;
-    height: 50px;
-}
-
 *{
     box-sizing: border-box;
 }
@@ -37,8 +10,8 @@
 body{
     display: flex;
     flex-wrap: wrap;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
     margin: 0;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
     height: 100vh;
 }
 
@@ -46,24 +19,52 @@ body{
     display: flex;
     position: relative;
     height: 100vh;
-    width: min(400px, 35vw);
+    width: min(600px, 35vw);
 }
-@media screen and (max-width: 795px){
+@media screen and (max-width: 600px){
     body{
         flex-direction: column;
     }
-
-    .left, .left .main-image{
+    .left, .right{
         width: 100vw;
+    }
+    .left, .left img{
         height: 200px;
     }
     .right{
-        width: 100vw;
-        height: 100%;
+        height: 500px !important;
     }
 }
 
-.left .main-image{
+.banner{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    top: 20%;
+    left: 0;
+    height: 100px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.banner-text{
+    font-size: 32px;
+    font-family: inherit;
+    font-weight: bold;
+    flex-shrink: 0;
+    color: white;
+}
+
+/* logo */
+.banner img{
+    flex: 0;
+    width: 75px;
+    height: 75px;
+}
+
+.left img{
     border: 0;
     width: inherit;
 }
@@ -73,25 +74,28 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: #83a2b5;
+    background: #592345;
 }
 
 .info{
-    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2em;
+    padding: 20px;
+     
 }
 
 .form-info{
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 40px;
-    background-color: white;
+    padding: 30px;
+    background-color: rgb(228, 225, 225);
 }
 
 .form{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 20px;
 }
 
@@ -100,7 +104,7 @@ body{
 }
 
 form:last-child{
-    font-size: 15px
+    font-size: 15px;
 }
 
 .firstRow, .secondRow,
@@ -109,6 +113,7 @@ form:last-child{
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .form-control{
     position: relative;
 }
@@ -157,21 +162,6 @@ form:last-child{
     visibility: visible;
 }
 
-.password-constraints{
-    position: absolute;
-    visibility: hidden;
-    font-size: 13px;
-    
-    top: -50px;
-    left: 440px;
-    width: 200px;
-}
-
-.form-control.error .password-constraints{
-    color: #e74c3c;
-    visibility: visible;
-}
-
 .form-control small {
     position: absolute;
     visibility: hidden;
@@ -193,9 +183,6 @@ label::after{
     color: red;
 }
 
-button, .last-line{
-}
-
 button{
     --background-color: rgba(199, 125, 51, 0.9);
     background-color: var(--background-color);
@@ -205,8 +192,8 @@ button{
     font-size: 16px;
     padding: 10px 25px;
     border: transparent;
+    width: 200px;
     border-radius: 8px;
-    top: calc(100% + 25px);
 }
 
 button:hover{
@@ -215,7 +202,6 @@ button:hover{
 }
 
 .last-line{
-    top: calc(100% + 70px);
     font-size: 16px;
     font-weight: 600;
     color: black;

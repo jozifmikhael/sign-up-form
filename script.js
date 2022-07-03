@@ -56,7 +56,7 @@ function checkInputs(){
     if (passwordValue === ''){
         setErrorFor(password, 'Password cannot be blank');
     } else if (!isPassword(passwordValue)){
-        setErrorForPassword(password, 'Password is not valid, must contain one upper case letter, one lower case letter, atleast one digit, atleast one special character, and minimum of 8 characters');
+        setErrorForPassword(password, 'Password is not valid');
     } else {
         setSuccessFor(password);
     }
@@ -82,10 +82,8 @@ function setErrorFor(input, message){
 // displays password constraints if password is not valid 
 function setErrorForPassword(input, message){
     const formControl = input.parentElement;
-    const para = formControl.querySelector('p');
     const small = formControl.querySelector('small');
-    small.innerText = 'Password is not valid';
-    para.innerText = message;
+    small.innerText = message;
     formControl.className = 'form-control error';
 }
 // takes input element and displays success

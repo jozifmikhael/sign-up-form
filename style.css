@@ -2,27 +2,33 @@
     font-family: Roboto;
     src: url(./font/Roboto/Roboto-Light.ttf);
 }
+html{
+    margin: 0
+}
 
 body{
-    margin: 0 0;
+    margin: 0;
     font-family: Roboto, Arial, Helvetica, sans-serif;
     display: flex;
+    flex-wrap: wrap;
 }
-
-
 
 .left{
-    overflow: HIDDEN;
-    flex: 0 2 auto;
+    flex: 0 0 auto;
     --height: 100vh;
-    height: var(--height);
-    width: max(400px, 30vw);
+    height: 100vh;
+    width: 30vw;
     position: relative;
 }
-
+@media screen and (max-width: 401px){
+    .left, .left img{
+        width: 100vw;
+        max-height: 300px;
+    }
+}
 .left img{
-    width: max(400px,30vw);
-    height: 100%;
+    width: auto;
+    height: 100vh;
 }
 
 .banner{
@@ -58,11 +64,11 @@ body{
 
 .right{
     position: relative;
-    overflow: hidden;
-    flex: 1 1 0%;
+    flex: 1 2 0%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 100%;
     background-color: #592345;
 }
 
@@ -70,7 +76,6 @@ body{
     width: max(268px,80%);
     max-height: 200px;
     margin: 0 50px;
-    margin-top: 100px;
     padding: 20px;
     font-size: max(20px, 1.5vw);
     font-weight: 600;
@@ -78,21 +83,19 @@ body{
 }
 
 .form-info{
-    padding: 32px;
-    overflow: hidden;
     flex: 1 1 0%;
-    max-height: 300px;
+    height: 300px;
+    width: auto;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    background-color: rgb(235, 232, 232);
+    background-color: rgb(187, 184, 184);
 }
 
-form{
+.form{
     position: absolute;
     font-size: 24px;
     margin: 15px 80px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
     font-weight: 700;
     gap: 25px;
@@ -109,39 +112,92 @@ form:last-child{
 .firstRow, .secondRow,
 .thirdRow{
     display: flex;
-    gap: 100px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.input{
-    display: flex;
-    gap: 4px;
-    flex-direction: column;
+.form-control{
+    position: relative;
 }
 
-label{
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
     font-size: 12px;
     letter-spacing: 0.1em;
 }
 
-.input input{
+.form-control input{
+    display: block;
     width: 200px;
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0;
+    margin-bottom: 2px;
+    font-family: inherit;
+    outline: none;
     border-radius: 4px;
 }
 
+.form-control.success input{
+    border-color: #2ecc71;
+}
+
+.form-control.error input{
+    border-color: #e74c3c;
+}
+
+.form-control i{
+    visibility: hidden;
+    position: absolute;
+    top: 28px;
+    left: 180px;
+}
+
+.form-control.success i.fa-check-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.password-constraints{
+    position: absolute;
+    visibility: hidden;
+    font-size: 13px;
+    
+    top: -20px;
+    left: 540px;
+    width: 200px;
+}
+
+.form-control.error .password-constraints{
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control small {
+    position: absolute;
+    visibility: hidden;
+    left: 0;
+}
+
+.form-control.error small{
+    color: #e74c3c;
+    visibility: visible;
+}
+
 label::after{
-    content: '*';
+    content: ' *';
     color: red;
 }
 
 .required-class::before{
-    content: '*';
+    content: '* ';
     color: red;
-}
-
-.input input:focus{
-    border: 1px solid red;
 }
 
 button, .last-line{
@@ -149,21 +205,27 @@ button, .last-line{
 }
 
 button{
-    background-color: rgb(199, 125, 51);
+    --background-color: rgba(199, 125, 51, 0.9);
+    background-color: var(--background-color);
     color: white;
     font-weight: bold;
     font-size: 16px;
     padding: 10px 25px;
     border: transparent;
     border-radius: 8px;
-    top: calc(100% + 75px);
+    top: calc(100% + 25px);
+}
+
+button:hover{
+    background-color: rgba(199, 125, 51, 1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .last-line{
-    top: calc(100% + 145px);
+    top: calc(100% + 95px);
     font-size: 16px;
     font-weight: 600;
-    color: white;
+    color: black;
 }
 
 a{

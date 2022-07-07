@@ -6,12 +6,31 @@ const email = document.getElementById('email');
 const number = document.getElementById('phone_number');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password_check');
+const inputs = document.querySelectorAll('input');
+
 
 form.addEventListener('submit', e => {
 
     e.preventDefault();
     checkInputs();
 });
+
+
+// Check which input is being sent and validate using switch statement
+// TODO
+function checkInputType(){
+
+}
+
+
+// add event listener for each input in DOM
+// TODO
+inputs.forEach(input => {
+    inputs.addEventListener('input', event => {
+
+    });
+});
+
 
 function checkInputs(){
     // get values from the inputs

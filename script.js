@@ -17,45 +17,69 @@ form.addEventListener('submit', e => {
 
 
 // Check which input is being sent and validate using switch statement
-// TODO
-function checkInputType(){
-
+function checkInputType(event){
+    if (event.target.id === 'first_name'){
+        firstNameCheck();
+    } else if (event.target.id === 'last_name'){
+        lastNameCheck();
+    } else if (event.target.id === 'email'){
+        emailCheck()
+    } else if (event.target.id === 'phone_number'){
+        phoneNumberCheck()
+    } else if (event.target.id === 'password'){
+        passwordCheck();
+    } else if (event.target.id === 'password_check'){
+        password2Check();
+    }
 }
 
 
 // add event listener for each input in DOM
-// TODO
 inputs.forEach(input => {
-    inputs.addEventListener('input', event => {
-
+    input.addEventListener('input', event => {
+        checkInputType(event);
     });
 });
 
-
 function checkInputs(){
-    // get values from the inputs
-    const firstNameValue = firstName.value.trim();
-    const lastNameValue = lastName.value.trim();
-    const emailValue = email.value.trim();
-    const numberValue = number.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
+    inputs.forEach(input => {
+        if (input.parentElement.className.includes('success')){
+            let successPara = document.querySelector('.form-result');
+            successPara.className = 'form-result success'
+        }
+    });
+}
 
+function firstNameCheck(){
     // first name checks
+    const firstNameValue = firstName.value.trim();
     if (firstNameValue === ''){
         setErrorFor(firstName, 'First name cannot be blank');
-    } else {
+    
+    }else if (firstNameValue.length < 2){
+        setErrorFor(firstName, 'First name must be longer');
+    }
+    else {
         setSuccessFor(firstName);
     }
+}
 
+function lastNameCheck(){
     // last name checks
+    const lastNameValue = lastName.value.trim();
     if (lastNameValue === ''){
         setErrorFor(lastName, 'Last name cannot be blank');
-    } else {
+    } else if (lastNameValue.length < 2) {
+        setErrorFor(lastName, 'Last name too short');
+    }
+    else {
         setSuccessFor(lastName);
     }
+}
 
+function emailCheck(){
     // email checks
+    const emailValue = email.value.trim();
     if (emailValue === ''){
         setErrorFor(email, 'Email cannot be blank');
     } else if (!isEmail(emailValue)){
@@ -64,13 +88,21 @@ function checkInputs(){
         setSuccessFor(email);
     }
 
+}
+
+function phoneNumberCheck(){
+    const numberValue = number.value.trim();
     // number checks
     if (numberValue === ''){
         setErrorFor(number, 'Number cannot be blank');
     } else if (!isNumber(numberValue)){
         setErrorFor(number, 'Number is not valid');
     } else setSuccessFor(number);
+}
 
+function passwordCheck(){
+    const password2Value = password2.value.trim();
+    const passwordValue = password.value.trim();
     // password checks
     if (passwordValue === ''){
         setErrorFor(password, 'Password cannot be blank');
@@ -79,7 +111,14 @@ function checkInputs(){
     } else {
         setSuccessFor(password);
     }
+    if (passwordValue !== password2Value){
+        setErrorFor(password2, 'Passwords do not match');
+    } else setSuccessFor(password2);
+}
 
+function password2Check(){
+    const password2Value = password2.value.trim();
+    const passwordValue = password.value.trim();
     if (password2Value === ''){
         setErrorFor(password2, 'Password cannot be blank');
     } else if (passwordValue !== password2Value){

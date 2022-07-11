@@ -137,6 +137,10 @@ form:last-child{
     border-radius: 4px;
 }
 
+.form-control input:focus{
+    border-color: #2a2cbe;
+}
+
 .form-control.success input{
     border-color: #2ecc71;
 }
@@ -181,6 +185,33 @@ label::after{
 .required-class::before{
     content: '* ';
     color: red;
+}
+
+.bottom-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: fit-content;
+}
+
+.button-span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form-result{
+    visibility: hidden;
+}
+
+.form-result.success{
+    visibility: visible;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
 }
 
 button{
